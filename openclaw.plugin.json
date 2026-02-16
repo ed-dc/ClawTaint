@@ -1,0 +1,67 @@
+{
+  "$schema": "https://openclaw.ai/schemas/plugin.json",
+  "id": "clawtaint",
+  "name": "ClawTaint - Taint Level Plugin",
+  "version": "0.1.0",
+  "kind": "security",
+  "description": "Dynamic trust-based security plugin for OpenClaw.ai. Tracks a taint level that decreases when untrusted websites are accessed, progressively restricting shell command capabilities.",
+  "author": "ClawTaint Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clawtaint/clawtaint"
+  },
+  "keywords": [
+    "security",
+    "taint-tracking",
+    "trust-level",
+    "shell-restrictions",
+    "url-trust"
+  ],
+  "engines": {
+    "openclaw": ">=1.0.0",
+    "node": ">=18.0.0"
+  },
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "configPath": {
+        "type": "string",
+        "default": "./clawtaint.yaml",
+        "description": "Path to the ClawTaint YAML configuration file"
+      },
+      "enabled": {
+        "type": "boolean",
+        "default": true,
+        "description": "Whether the taint level plugin is enabled"
+      },
+      "logLevel": {
+        "type": "string",
+        "enum": ["debug", "info", "warn", "error"],
+        "default": "info",
+        "description": "Logging verbosity level"
+      }
+    },
+    "additionalProperties": false
+  },
+  "capabilities": {
+    "requiresApprovalAPI": false,
+    "requiresLogging": true,
+    "requiresConversationAccess": false,
+    "requiresNetworkAccess": false
+  },
+  "categories": [
+    "security",
+    "safety"
+  ],
+  "permissions": [
+    "hook:before-tool-call",
+    "hook:before-agent-start",
+    "api:logging"
+  ],
+  "documentation": {
+    "readme": "README.md"
+  }
+}

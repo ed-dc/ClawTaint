@@ -1,0 +1,58 @@
+{
+  "name": "clawtaint",
+  "version": "0.1.0",
+  "description": "Taint Level plugin for OpenClaw.ai - dynamic trust-based shell restrictions",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clawtaint/clawtaint.git"
+  },
+  "keywords": [
+    "openclaw",
+    "security",
+    "taint-tracking",
+    "trust-level",
+    "plugin"
+  ],
+  "author": "ClawTaint Team",
+  "license": "MIT",
+  "openclaw": {
+    "extensions": [
+      "./dist/src/index.js"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "openclaw.plugin.json"
+  ],
+  "dependencies": {
+    "yaml": "^2.8.2",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0",
+    "vitest": "^4.0.18"
+  }
+}
